@@ -65,7 +65,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold">Location</h3>
-                  <p className="text-muted-foreground">Your City, Country</p>
+                  <p className="text-muted-foreground">Houston, Texas</p>
                 </div>
               </CardContent>
             </Card>
@@ -77,7 +77,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold">Email</h3>
-                  <p className="text-muted-foreground">your.email@example.com</p>
+                  <p className="text-muted-foreground">HJRoberto@gmail.com</p>
                 </div>
               </CardContent>
             </Card>

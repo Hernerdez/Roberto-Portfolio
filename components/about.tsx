@@ -41,7 +41,7 @@ export function About() {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              I&apos;m <span className="text-primary">Your Name</span>, a Full Stack Developer
+              I&apos;m <span className="text-primary">Roberto Hernandez</span>, a Full Stack Developer
             </h3>
             <p className="text-muted-foreground mb-4">
               I specialize in building modern web applications using React, Next.js, and Node.js. With over X years of
@@ -55,15 +55,15 @@ export function About() {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <p className="font-medium">Name:</p>
-                <p className="text-muted-foreground">Your Name</p>
+                <p className="text-muted-foreground">Roberto Hernandez</p>
               </div>
               <div>
                 <p className="font-medium">Email:</p>
-                <p className="text-muted-foreground">your.email@example.com</p>
+                <p className="text-muted-foreground">HJRoberto@gmail.com</p>
               </div>
               <div>
                 <p className="font-medium">Location:</p>
-                <p className="text-muted-foreground">Your City, Country</p>
+                <p className="text-muted-foreground">Houston, Texas</p>
               </div>
               <div>
                 <p className="font-medium">Availability:</p>
