@@ -31,12 +31,12 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent",
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-black dark:border-black" : "bg-transparent",
       )}
     >
       <div className="container flex items-center justify-between h-16 px-4 mx-auto">
         <Link href="#home" className="text-xl font-bold">
-          Portfolio
+          RH
         </Link>
 
         {/* Desktop Navigation */}

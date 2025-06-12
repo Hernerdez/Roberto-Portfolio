@@ -13,6 +13,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
   const [showSideText, setShowSideText] = useState(false)
   const [showOverlay, setShowOverlay] = useState(false)
   const [exitText, setExitText] = useState(false)
+  const [exiting, setExiting] = useState(false)
 
   useEffect(() => {
     const timer1 = setTimeout(() => setShowWelcome(true), 500)
@@ -20,6 +21,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
     const timer3 = setTimeout(() => {
       setExitText(true)
       setShowOverlay(true)
+      setExiting(true)
       if (onExit) onExit()
     }, 2500)
     const timer4 = setTimeout(() => onComplete(), 4000)
@@ -33,7 +35,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
   }, [onComplete, onExit])
 
   return (
-    <div className="fixed inset-0 z-50 bg-black">
+    <div className={`fixed inset-0 z-50 ${exiting ? 'bg-transparent' : 'bg-black'}`}>
       {/* Welcome text in center */}
       <AnimatePresence>
         {showWelcome && !exitText && (

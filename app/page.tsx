@@ -11,12 +11,14 @@ import { TransitionWelcome } from "@/components/transition-welcome"
 
 export default function Home() {
   const [showContent, setShowContent] = useState(false)
+  const [showWelcome, setShowWelcome] = useState(true)
 
   return (
     <>
-      {!showContent && (
-        <TransitionWelcome 
-          onComplete={() => setShowContent(true)} 
+      {showWelcome && (
+        <TransitionWelcome
+          onExit={() => setShowContent(true)}
+          onComplete={() => setShowWelcome(false)}
         />
       )}
       {showContent && (
