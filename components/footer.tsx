@@ -15,7 +15,7 @@ export function Footer() {
           </div>
           <div className="flex space-x-4 mb-4 md:mb-0">
             <Link
-              href="https://github.com/yourusername"
+              href="https://github.com/hernerdez"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
@@ -24,7 +24,7 @@ export function Footer() {
               <Github className="h-5 w-5" />
             </Link>
             <Link
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/roberto-hernandez-151537295/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
@@ -33,7 +33,7 @@ export function Footer() {
               <Linkedin className="h-5 w-5" />
             </Link>
             <Link
-              href="https://twitter.com/yourusername"
+              href="https://twitter.com/stilldecidingidk"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
@@ -42,7 +42,7 @@ export function Footer() {
               <Twitter className="h-5 w-5" />
             </Link>
             <Link
-              href="mailto:your.email@example.com"
+              href="mailto:contact@hernerdez.com"
               className="hover:text-primary transition-colors"
               aria-label="Email"
             >
