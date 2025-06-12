@@ -51,7 +51,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-border mt-4 pt-4 text-center text-sm text-muted-foreground">
-          <p>© {currentYear} Your Name. All rights reserved.</p>
+          <p>© {currentYear} Roberto Hernandez. All rights reserved.</p>
         </div>
       </div>
     </footer>
