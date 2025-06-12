@@ -13,7 +13,7 @@ export function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.3 }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold mb-2">About Me</h2>
@@ -25,7 +25,7 @@ export function About() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
+            viewport={{ amount: 0.3 }}
             className="relative aspect-square max-w-md mx-auto"
           >
             <div className="absolute inset-0 border-2 border-primary rounded-lg transform translate-x-4 translate-y-4"></div>
@@ -38,7 +38,7 @@ export function About() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
+            viewport={{ amount: 0.3 }}
           >
             <h3 className="text-2xl font-bold mb-4">
               I&apos;m <span className="text-primary">Roberto Hernandez</span>, a Full Stack Developer

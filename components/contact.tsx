@@ -41,7 +41,7 @@ export function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto"
         >
@@ -55,7 +55,7 @@ export function Contact() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex items-center gap-4"
             >
@@ -73,7 +73,7 @@ export function Contact() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex items-center gap-4"
             >
@@ -90,7 +90,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">

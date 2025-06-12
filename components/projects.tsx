@@ -44,7 +44,7 @@ export function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
@@ -60,7 +60,7 @@ export function Projects() {
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="h-full">
@@ -98,7 +98,7 @@ export function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.3 }}
           className="text-center mt-12"
         >
           <Button asChild variant="outline">
