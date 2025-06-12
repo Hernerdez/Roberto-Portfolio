@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster"
 export const metadata = {
   title: "Roberto Hernandez - Portfolio",
   description: "Full Stack Developer Portfolio",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
