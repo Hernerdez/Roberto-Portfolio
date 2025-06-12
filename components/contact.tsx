@@ -12,9 +12,11 @@ import { Mail, MapPin, Phone } from "lucide-react"
 import { Label } from "@/components/ui/label"
 import { Send } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import emailjs from '@emailjs/browser'
 
 export function Contact() {
   const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,17 +29,43 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission - you can integrate with a service like EmailJS or a backend API
-    console.log("Form submitted:", formData)
-    // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" })
-    // Show success message using toast
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    })
+    setIsSubmitting(true)
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'contact@hernerdez.com',
+          to_name: 'Roberto Hernandez',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+
+      // Reset form
+      setFormData({ name: "", email: "", subject: "", message: "" })
+      
+      // Show success message
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      })
+    } catch (error) {
+      console.error('Error sending email:', error)
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -69,8 +97,8 @@ export function Contact() {
               </div>
               <div>
                 <h3 className="font-light tracking-wider mb-1">Email</h3>
-                <a href="mailto:HJRoberto@gmail.com" className="text-muted-foreground font-light tracking-wide hover:text-primary transition-colors">
-                  HJRoberto@gmail.com
+                <a href="mailto:contact@hernerdez.com" className="text-muted-foreground font-light tracking-wide hover:text-primary transition-colors">
+                  contact@hernerdez.com
                 </a>
               </div>
             </motion.div>
@@ -151,8 +179,12 @@ export function Contact() {
                   required
                 />
               </div>
-              <Button className="w-full font-light tracking-wide">
-                Send Message <Send className="ml-2 h-4 w-4" />
+              <Button 
+                type="submit" 
+                className="w-full font-light tracking-wide"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"} <Send className="ml-2 h-4 w-4" />
               </Button>
             </form>
           </motion.div>
