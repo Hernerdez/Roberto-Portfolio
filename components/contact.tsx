@@ -39,9 +39,9 @@ export function Contact() {
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
+          reply_to: formData.email,
+          subject: `[Portfolio Contact] ${formData.subject}`,
+          message: `From: ${formData.name} (${formData.email})\n\n${formData.message}`,
           to_email: 'contact@hernerdez.com',
           to_name: 'Roberto Hernandez',
         },
