@@ -103,13 +103,13 @@ export function Hero() {
     },
     {
       element: (
-        <h2 className="text-2xl md:text-3xl font-light tracking-wider mb-6">
+        <div className="text-2xl md:text-3xl font-light tracking-wider mb-6">
           {typedText}
           <span className={`${showCursor ? "opacity-100" : "opacity-0"}`}>|</span>
-        </h2>
+        </div>
       ),
       delay: 0.2,
-      animation: { initial: { opacity: 0, x: -50, y: 50 }, animate: { opacity: 1, x: 0, y: 0 } }
+      animation: { initial: { opacity: 0 }, animate: { opacity: 1 } }
     },
     {
       element: (
