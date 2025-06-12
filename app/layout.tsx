@@ -1,7 +1,6 @@
 import type React from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "sonner"
 
 export const metadata = {
   title: "Roberto Hernandez - Portfolio",
@@ -19,7 +18,6 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>
