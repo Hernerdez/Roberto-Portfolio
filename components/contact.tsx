@@ -11,8 +11,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Mail, MapPin, Phone } from "lucide-react"
 import { Label } from "@/components/ui/label"
 import { Send } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 export function Contact() {
+  const { toast } = useToast()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,8 +33,11 @@ export function Contact() {
     console.log("Form submitted:", formData)
     // Reset form
     setFormData({ name: "", email: "", subject: "", message: "" })
-    // Show success message
-    alert("Message sent successfully!")
+    // Show success message using toast
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    })
   }
 
   return (
