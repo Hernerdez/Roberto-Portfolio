@@ -75,17 +75,17 @@ export function Hero() {
   const socialIcons = [
     {
       icon: <Github className="h-5 w-5" />,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/hernerdez",
       label: "GitHub"
     },
     {
       icon: <Linkedin className="h-5 w-5" />,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/roberto-hernandez-151537295/",
       label: "LinkedIn"
     },
     {
       icon: <Twitter className="h-5 w-5" />,
-      href: "https://twitter.com/yourusername",
+      href: "https://twitter.com/placeholderidk",
       label: "Twitter"
     }
   ]
