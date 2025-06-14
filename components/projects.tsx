@@ -23,7 +23,7 @@ const projects = [
     description: "Schedulify is a smart academic scheduling tool that automatically scans PDF syllabi and extracts important dates like assignments and exams into a personal digital calendar. Designed to reduce the manual effort of calendar entry, it helps students stay organized",
     image: "/Schedulify.png",
     tags: ["Spring Boot (Java)", "Python, ChatPDF, PyMuPDF, Regex", "MariaDB", "	Bcrypt & HTTPS", "Vultr",],
-    liveUrl: "https://example.com",
+    liveUrl: "https://schedulify.net/login",
     githubUrl: undefined,
   },
   {
