@@ -26,11 +26,17 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ amount: 0.3 }}
-            className="relative aspect-square max-w-md mx-auto"
+            className="relative max-w-md mx-auto"
           >
-            <div className="absolute inset-0 border-2 border-primary rounded-lg transform translate-x-4 translate-y-4"></div>
-            <div className="relative h-full w-full overflow-hidden rounded-lg">
-              <Image src="/placeholder.svg?height=400&width=400" alt="Profile" fill className="object-cover" />
+            <div className="relative w-82 h-82 mx-auto">
+              <div className="absolute inset-0 border-2 border-primary rounded-lg z-10"></div>
+              <Image
+                src="/GradPhoto.png"
+                alt="Profile"
+                width={256}
+                height={256}
+                className="object-cover rounded-lg"
+              />
             </div>
           </motion.div>
 
@@ -44,13 +50,14 @@ export function About() {
               I&apos;m <span className="text-primary">Roberto Hernandez</span>, a Full Stack Developer
             </h3>
             <p className="text-muted-foreground mb-4">
-              I specialize in building modern web applications using React, Next.js, and Node.js. With over X years of
-              experience in the industry, I've worked on a variety of projects ranging from small business websites to
-              complex enterprise applications.
+            Hey there! I'm a software engineer who loves turning coffee and code into clean, useful, and (sometimes) beautifully animated web apps. I specialize in building full-stack applications that are as reliable under the hood as they are intuitive to use. With experience across both frontend and backend development, I'm comfortable designing responsive user interfaces, architecting secure APIs, managing databases, and deploying to cloud platforms. I focus on writing clean, maintainable code, prioritizing performance, accessibility, and user experience. Whether it's launching a new product or scaling an existing one, I bring a thoughtful, adaptable approach to every stage of the development cycle.
             </p>
             <p className="text-muted-foreground mb-6">
-              My passion lies in creating intuitive user experiences and writing clean, efficient code. I'm constantly
-              learning and exploring new technologies to stay at the forefront of web development.
+            Outside of coding, I'm a big fan of classic Nintendo games from the DS, Wii, and Wii U era—especially anything from the golden 2000s to early 2010s. When I'm not debugging, you can probably find me watching or playing basketball, losing track of time in an old Mario title, or thinking about my next creative side project. My passion lies in creating intuitive user experiences and writing clean, efficient code. I'm constantly
+            learning and exploring new technologies to stay at the forefront of web development.
+            </p>
+            <p className="text-muted-foreground mb-8">
+              If you ever want to 1v1 me in Mario Kart or basketball, I wont turn you down. 
             </p>
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
@@ -70,9 +77,9 @@ export function About() {
                 <p className="text-muted-foreground">Available for hire</p>
               </div>
             </div>
-            <Button>
+            {/* <Button>
               Download CV <Download className="ml-2 h-4 w-4" />
-            </Button>
+            </Button> */}
           </motion.div>
         </div>
       </div>
