@@ -10,30 +10,30 @@ import { Badge } from "@/components/ui/badge"
 const projects = [
   {
     id: 1,
-    title: "Project One",
-    description: "A modern web application built with Next.js and Tailwind CSS.",
-    image: "/placeholder.svg?height=300&width=500",
-    tags: ["Next.js", "React", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/yourusername/project-one",
+    title: "MacroFactor",
+    description: "A personalized macro tracking app that helps users log meals, monitor daily nutrition, and stay on track with fitness goals. Users can search foods, group them by meals, and view macro breakdowns—all within a clean, intuitive interface available on both web and mobile.",
+    image: "/MacroFactor.png",
+    tags: ["Full Stack Development", "FastAPI", "PostgreSQL", "React", "Swift"],
+    liveUrl: "https://macro-tracker-gamma.vercel.app/",
+    githubUrl: undefined,
   },
   {
     id: 2,
-    title: "Project Two",
-    description: "An e-commerce platform with a custom CMS and payment integration.",
-    image: "/placeholder.svg?height=300&width=500",
-    tags: ["React", "Node.js", "MongoDB"],
+    title: "Schedulify",
+    description: "Schedulify is a smart academic scheduling tool that automatically scans PDF syllabi and extracts important dates like assignments and exams into a personal digital calendar. Designed to reduce the manual effort of calendar entry, it helps students stay organized",
+    image: "/Schedulify.png",
+    tags: ["Spring Boot (Java)", "Python, ChatPDF, PyMuPDF, Regex", "MariaDB", "	Bcrypt & HTTPS", "Vultr",],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/yourusername/project-two",
+    githubUrl: undefined,
   },
   {
     id: 3,
-    title: "Project Three",
-    description: "A real-time dashboard for monitoring system performance.",
-    image: "/placeholder.svg?height=300&width=500",
-    tags: ["Vue.js", "Express", "Socket.io"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/yourusername/project-three",
+    title: "Portfolio",
+    description: "A fully responsive and interactive portfolio website designed to showcase my software engineering projects, skills, and experience. The the landing page features animated transitions and a dynamic user interface that reflects my creativity and technical capabilities.",
+    image: "/Portfolio.png",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://Hernerdez.com",
+    githubUrl: undefined,
   },
 ]
 
@@ -54,7 +54,7 @@ export function Projects() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -63,12 +63,20 @@ export function Projects() {
               viewport={{ amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full">
+              <Card className="h-full flex flex-col">
                 <CardHeader>
                   <CardTitle className="font-light tracking-wider">{project.title}</CardTitle>
                   <CardDescription className="font-light tracking-wide">{project.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 flex flex-col">
+                  <div className="relative w-full h-48 mb-4">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="secondary" className="font-light">
@@ -77,12 +85,14 @@ export function Projects() {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="flex gap-4">
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-4 w-4" /> Code
-                    </a>
-                  </Button>
+                <CardFooter className="flex gap-4 mt-auto">
+                  {project.githubUrl && (
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" /> Code
+                      </a>
+                    </Button>
+                  )}
                   <Button size="sm" asChild>
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
@@ -102,7 +112,7 @@ export function Projects() {
           className="text-center mt-12"
         >
           <Button asChild variant="outline">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/Hernerdez" target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-4 w-4" /> View More on GitHub
             </a>
           </Button>
