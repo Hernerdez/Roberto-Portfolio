@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, Instagram } from "lucide-react"
 import Link from "next/link"
 
 export function Footer() {
@@ -33,13 +33,13 @@ export function Footer() {
               <Linkedin className="h-5 w-5" />
             </Link>
             <Link
-              href="https://twitter.com/stilldecidingidk"
+              href="https://instagram.com/hernerdez"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
-              aria-label="Twitter"
+              aria-label="Instagram"
             >
-              <Twitter className="h-5 w-5" />
+              <Instagram className="h-5 w-5" />
             </Link>
             <Link
               href="mailto:contact@hernerdez.com"

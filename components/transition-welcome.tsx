@@ -95,7 +95,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
                 ease: "easeOut",
                 exit: { duration: 1.5, ease: [0.22, 1, 0.36, 1] }
               }}
-              className="absolute left-8 top-1/2 -translate-y-1/2"
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 hidden md:block"
             >
               <div className="transform -rotate-90 origin-center">
                 <span className="text-sm md:text-base tracking-[0.3em] text-gray-300 font-light whitespace-nowrap">
@@ -114,7 +114,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
                 ease: "easeOut",
                 exit: { duration: 1.5, ease: [0.22, 1, 0.36, 1] }
               }}
-              className="absolute right-8 top-1/2 -translate-y-1/2"
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 hidden md:block"
             >
               <div className="transform rotate-90 origin-center">
                 <span className="text-sm md:text-base tracking-[0.3em] text-gray-300 font-light whitespace-nowrap">

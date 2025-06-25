@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Instagram } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ReactNode } from "react"
 
@@ -84,9 +84,9 @@ export function Hero() {
       label: "LinkedIn"
     },
     {
-      icon: <Twitter className="h-5 w-5" />,
-      href: "https://twitter.com/placeholderidk",
-      label: "Twitter"
+      icon: <Instagram className="h-5 w-5" />,
+      href: "https://www.instagram.com/hernerdez",
+      label: "Instagram"
     }
   ]
 
@@ -95,7 +95,7 @@ export function Hero() {
       element: (
         <AnimatedText
           text="Hi, I'm Roberto Hernandez"
-          className="text-4xl md:text-6xl font-light tracking-wider mb-4 whitespace-nowrap"
+          className="text-4xl md:text-6xl font-light tracking-wider mb-4 whitespace-normal md:whitespace-nowrap"
         />
       ),
       delay: 0,
