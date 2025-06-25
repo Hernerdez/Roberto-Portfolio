@@ -95,7 +95,7 @@ export function Hero() {
       element: (
         <AnimatedText
           text="Hi, I'm Roberto Hernandez"
-          className="text-4xl sm:text-5xl md:text-6xl font-light tracking-wider mb-4 whitespace-nowrap"
+          className="text-3xl sm:text-5xl md:text-6xl font-light tracking-wider mb-4 whitespace-nowrap px-4"
         />
       ),
       delay: 0,
