@@ -10,11 +10,11 @@ import { Badge } from "@/components/ui/badge"
 const projects = [
   {
     id: 1,
-    title: "MacroFactor",
-    description: "A personalized macro tracking app that helps users log meals, monitor daily nutrition, and stay on track with fitness goals. Users can search foods, group them by meals, and view macro breakdowns—all within a clean, intuitive interface available on both web and mobile.",
-    image: "/MacroFactor.png",
-    tags: ["Full Stack Development", "FastAPI", "PostgreSQL", "React", "Swift"],
-    liveUrl: "https://macro-tracker-gamma.vercel.app/",
+    title: "Vedieco",
+    description: "Vedieco is a location-smart, iOS-only marketplace that bridges the gap between pop-up vendors and the shoppers who love them.",
+    image: "",
+    tags: ["SwiftUI & Combine", "Offline-first architecture" "FastAPI + PostgreSQL (Dockerized)" , "Core Location " " "&" " "MapKit with custom annotations"],
+    liveUrl: "https://www.vedieco.com/",
     githubUrl: undefined,
   },
   {
@@ -28,11 +28,11 @@ const projects = [
   },
   {
     id: 3,
-    title: "Portfolio",
-    description: "A fully responsive and interactive portfolio website designed to showcase my software engineering projects, skills, and experience. The the landing page features animated transitions and a dynamic user interface that reflects my creativity and technical capabilities.",
-    image: "/Portfolio.png",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    liveUrl: "https://Hernerdez.com",
+    title: "MacroFactor",
+    description: "A personalized macro tracking app that helps users log meals, monitor daily nutrition, and stay on track with fitness goals. Users can search foods, group them by meals, and view macro breakdowns—all within a clean, intuitive interface available on both web and mobile.",
+    image: "/MacroFactor.png",
+    tags: ["Full Stack Development", "FastAPI", "PostgreSQL", "React", "Swift"],
+    liveUrl: "https://macro-tracker-gamma.vercel.app/",
     githubUrl: undefined,
   },
 ]
