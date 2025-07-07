@@ -11,7 +11,7 @@ const projects = [
   {
     id: 1,
     title: "Vedieco",
-    description: "Vedieco is a location-aware, iOS-exclusive marketplace designed to connect pop-up vendors with nearby shoppers in real time. Whether it’s food trucks, craft sellers, or streetwear brands, Vedieco helps small, mobile businesses grow by making them easier to discover and easier to shop from. Built with a clean, vendor-friendly interface and consumer-first design, the app lets vendors manage sales, track performance, and accept payments—all from one place. Shoppers, on the other hand, get a curated feed of local events, pop-up markets, and trending vendors, ensuring they never miss a hidden gem around the corner.",
+    description: "Vedieco is a location-smart, iOS-only marketplace that connects pop-up vendors with local shoppers. Vendors can manage sales and accept payments, while shoppers discover nearby food, fashion, and art events—all in real time.",
     image: "/VediecoPicture.png",
     tags: ["SwiftUI & Combine", "Offline-first architecture", "FastAPI + PostgreSQL", "MapKit with custom annotations"],
     liveUrl: "https://www.vedieco.com/",
