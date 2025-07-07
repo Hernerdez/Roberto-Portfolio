@@ -74,7 +74,7 @@ export function Projects() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className={`${project.id === 1 ? 'object-contain' : 'object-cover'} object-center rounded-lg`}
+                      className={`object-cover object-center rounded-lg`}
                     />
                   </div>
                   <div className="flex flex-wrap gap-2 mb-4">
