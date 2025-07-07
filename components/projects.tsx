@@ -74,7 +74,8 @@ export function Projects() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className={`object-cover ${project.id === 1 ? 'object-left' : 'object-center'} rounded-lg`}
+                      className="object-cover rounded-lg"
+                      style={project.id === 1 ? { objectPosition: '30% center' } : { objectPosition: 'center' }}
                     />
                   </div>
                   <div className="flex flex-wrap gap-2 mb-4">
