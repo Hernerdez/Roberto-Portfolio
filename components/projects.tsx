@@ -13,7 +13,7 @@ const projects = [
     title: "Vedieco",
     description: "Vedieco is a location-smart, iOS-only marketplace that bridges the gap between pop-up vendors and the shoppers who love them.",
     image: "/VediecoPicture.png",
-    tags: ["SwiftUI & Combine", "Offline-first architecture", "FastAPI + PostgreSQL (Dockerized)", "Core Location", "MapKit with custom annotations"],
+    tags: ["SwiftUI & Combine", "Offline-first architecture", "FastAPI + PostgreSQL", "MapKit with custom annotations"],
     liveUrl: "https://www.vedieco.com/",
     githubUrl: undefined,
   },
