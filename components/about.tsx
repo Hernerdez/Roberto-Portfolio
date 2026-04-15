@@ -50,7 +50,7 @@ export function About() {
               I&apos;m <span className="text-primary">Roberto Hernandez</span>, a Full Stack Developer
             </h3>
             <p className="text-muted-foreground mb-4">
-            Hey there! I'm a software engineer who loves turning coffee and code into clean, useful, and (sometimes) beautifully animated web apps. I specialize in building full-stack applications that are as reliable under the hood as they are intuitive to use. With experience across both frontend and backend development, I'm comfortable designing responsive user interfaces, architecting secure APIs, managing databases, and deploying to cloud platforms. I focus on writing clean, maintainable code, prioritizing performance, accessibility, and user experience. Whether it's launching a new product or scaling an existing one, I bring a thoughtful, adaptable approach to every stage of the development cycle.
+            Hey there! I'm a Software Engineering grad from Sam Houston State University. Currently doing IT / Networking at RelaDyne — firewalls, routers, system deployments, PowerShell scripts that save me from doing the same thing twice. Outside of work, I build full-stack apps from scratch because I can't sit still.
             </p>
             <p className="text-muted-foreground mb-6">
             Outside of coding, I'm a big fan of classic Nintendo games from the DS, Wii, and Wii U era—especially anything from the golden 2000s to early 2010s. When I'm not debugging, you can probably find me watching or playing basketball, losing track of time in an old Mario title, or thinking about my next creative side project. My passion lies in creating intuitive user experiences and writing clean, efficient code. I'm constantly

@@ -104,7 +104,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
               </div>
             </motion.div>
 
-            {/* Right side - PORTFOLIO 2025 */}
+            {/* Right side - PORTFOLIO 2026 */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -118,7 +118,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
             >
               <div className="transform rotate-90 origin-center">
                 <span className="text-sm md:text-base tracking-[0.3em] text-gray-300 font-light whitespace-nowrap">
-                  PORTFOLIO 2025
+                  PORTFOLIO 2026
                 </span>
               </div>
             </motion.div>

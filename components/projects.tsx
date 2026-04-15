@@ -3,8 +3,9 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Server } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 
 const projects = [
@@ -28,11 +29,12 @@ const projects = [
   },
   {
     id: 3,
-    title: "MacroFactor",
-    description: "A personalized macro tracking app that helps users log meals, monitor daily nutrition, and stay on track with fitness goals. Users can search foods, group them by meals, and view macro breakdowns—all within a clean, intuitive interface available on both web and mobile.",
-    image: "/MacroFactor.png",
-    tags: ["Full Stack Development", "FastAPI", "PostgreSQL", "React", "Swift"],
-    liveUrl: "https://macro-tracker-gamma.vercel.app/",
+    title: "HomeLab",
+    description: "A self-hosted home server environment running virtualized workloads, containerized services, and secure remote access — visualized as an interactive network topology.",
+    image: "/HomeLab.png",
+    tags: ["Proxmox", "Docker", "Networking", "Linux", "Self-Hosted"],
+    liveUrl: undefined,
+    internalUrl: "/homelab",
     githubUrl: undefined,
   },
 ]
@@ -69,15 +71,21 @@ export function Projects() {
                   <CardDescription className="font-light tracking-wide">{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col">
-                  <div className="relative w-full h-48 mb-4">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover rounded-lg"
-                      style={project.id === 1 ? { objectPosition: '30% center' } : { objectPosition: 'center' }}
-                    />
-                  </div>
+                  {project.image ? (
+                    <div className={`relative w-full h-48 mb-4 rounded-lg overflow-hidden border border-border ${project.id === 3 ? 'bg-neutral-900' : ''}`}>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className={project.id === 3 ? "object-contain p-2" : "object-cover"}
+                        style={project.id === 1 ? { objectPosition: '30% center' } : { objectPosition: 'center' }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-48 mb-4 rounded-lg bg-muted flex items-center justify-center">
+                      <Server className="h-16 w-16 text-muted-foreground" />
+                    </div>
+                  )}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="secondary" className="font-light">
@@ -94,11 +102,19 @@ export function Projects() {
                       </a>
                     </Button>
                   )}
-                  <Button size="sm" asChild>
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-                    </a>
-                  </Button>
+                  {"internalUrl" in project && project.internalUrl ? (
+                    <Button size="sm" asChild>
+                      <Link href={project.internalUrl}>
+                        <Server className="mr-2 h-4 w-4" /> Explore
+                      </Link>
+                    </Button>
+                  ) : project.liveUrl ? (
+                    <Button size="sm" asChild>
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+                      </a>
+                    </Button>
+                  ) : null}
                 </CardFooter>
               </Card>
             </motion.div>
