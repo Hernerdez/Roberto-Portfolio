@@ -12,6 +12,33 @@ body {
   }
 }
 
+/* /homelab — ambient packet traveling the WireGuard tunnel connector */
+.hl-packet {
+  top: 0;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hl-packet {
+    animation: hl-packet 2.6s linear infinite;
+  }
+}
+@keyframes hl-packet {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 3px);
+    opacity: 0;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
