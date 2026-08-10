@@ -256,7 +256,7 @@ export const NODES: HomelabNode[] = [
     title: "VM 300 · nvr-host",
     subtitle: "Frigate NVR",
     status: "running",
-    incidentIds: ["frigate-auth", "sata-cable"],
+    incidentIds: ["sata-cable"],
     specs: [
       ["Host", "pve3"],
       ["Specs", "4 cores · 8GB RAM · ballooning disabled"],
@@ -310,17 +310,6 @@ export const WAR_STORIES: WarStory[] = [
       "OptiPlex SFF SATA power cables can look seated but sit 1mm shy.",
     fix: "Physical reseat, zero data loss both times. Permanent strain-relief fix scheduled.",
     lesson: "When NFS breaks, suspect the physical layer first.",
-  },
-  {
-    id: "frigate-auth",
-    title: "The auth bypass that wasn't a bug",
-    nodeIds: ["vm300"],
-    symptom:
-      "After exposing Frigate publicly, unauthenticated visitors could see camera feeds. 90 minutes of debugging configs and nuking databases followed.",
-    rootCause:
-      "Frigate 0.17 intentionally serves its internal port (5000) with no auth — anonymous = admin, by design, for backend integrations. The authenticated port is 8971.",
-    fix: "One line in the reverse-proxy target: point it at 8971, never 5000.",
-    lesson: "Read the docs for the port model before exposing anything.",
   },
   {
     id: "e1000e",
