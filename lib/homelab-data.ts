@@ -185,7 +185,6 @@ export const NODES: HomelabNode[] = [
     subtitle: "Dell OptiPlex 5060 · 32GB",
     ip: "192.168.1.202",
     status: "running",
-    incidentIds: ["sata-cable"],
     specs: [
       ["Model", "Dell OptiPlex 5060"],
       ["RAM", "32GB DDR4"],
@@ -256,7 +255,6 @@ export const NODES: HomelabNode[] = [
     title: "VM 300 · nvr-host",
     subtitle: "Frigate NVR",
     status: "running",
-    incidentIds: ["sata-cable"],
     specs: [
       ["Host", "pve3"],
       ["Specs", "4 cores · 8GB RAM · ballooning disabled"],
@@ -300,17 +298,6 @@ export const DATA_PATHS: DataPath[] = [
 ]
 
 export const WAR_STORIES: WarStory[] = [
-  {
-    id: "sata-cable",
-    title: "The SATA cable that struck twice",
-    nodeIds: ["pve3", "vm300"],
-    symptom:
-      "pve3's 24TB drive vanished from the kernel mid-session — twice. Symptom chain: lsblk missing sda → nfs-kernel-server dependency failure → VM 300 NFS mounts refusing connections.",
-    rootCause:
-      "OptiPlex SFF SATA power cables can look seated but sit 1mm shy.",
-    fix: "Physical reseat, zero data loss both times. Permanent strain-relief fix scheduled.",
-    lesson: "When NFS breaks, suspect the physical layer first.",
-  },
   {
     id: "e1000e",
     title: "The NIC that locked up under load",
