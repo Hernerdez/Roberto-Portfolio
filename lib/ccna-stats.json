@@ -1,0 +1,243 @@
+{
+  "generatedAt": "2026-09-04T21:16:14.027Z",
+  "exam": {
+    "date": "2026-09-14",
+    "result": null
+  },
+  "totals": {
+    "cards": 166,
+    "understood": 0,
+    "learning": 134,
+    "unseen": 32,
+    "answers": 405,
+    "correct": 242,
+    "studyDays": 3,
+    "streak": 1
+  },
+  "topics": [
+    {
+      "topic": "SYSLOG",
+      "cards": 3,
+      "understood": 0,
+      "correct": 3,
+      "seen": 8
+    },
+    {
+      "topic": "FHRP",
+      "cards": 4,
+      "understood": 0,
+      "correct": 11,
+      "seen": 22
+    },
+    {
+      "topic": "SNMP",
+      "cards": 1,
+      "understood": 0,
+      "correct": 2,
+      "seen": 4
+    },
+    {
+      "topic": "OSPF",
+      "cards": 11,
+      "understood": 0,
+      "correct": 24,
+      "seen": 45
+    },
+    {
+      "topic": "DHCP",
+      "cards": 5,
+      "understood": 0,
+      "correct": 8,
+      "seen": 15
+    },
+    {
+      "topic": "ACL",
+      "cards": 9,
+      "understood": 0,
+      "correct": 13,
+      "seen": 24
+    },
+    {
+      "topic": "SECURITY",
+      "cards": 27,
+      "understood": 0,
+      "correct": 36,
+      "seen": 65
+    },
+    {
+      "topic": "STP",
+      "cards": 7,
+      "understood": 0,
+      "correct": 14,
+      "seen": 25
+    },
+    {
+      "topic": "TRANSPORT",
+      "cards": 2,
+      "understood": 0,
+      "correct": 4,
+      "seen": 7
+    },
+    {
+      "topic": "ETHERCHANNEL",
+      "cards": 1,
+      "understood": 0,
+      "correct": 4,
+      "seen": 7
+    },
+    {
+      "topic": "WIRELESS",
+      "cards": 24,
+      "understood": 0,
+      "correct": 31,
+      "seen": 52
+    },
+    {
+      "topic": "NAT",
+      "cards": 2,
+      "understood": 0,
+      "correct": 3,
+      "seen": 5
+    },
+    {
+      "topic": "SUBNETTING",
+      "cards": 7,
+      "understood": 0,
+      "correct": 11,
+      "seen": 18
+    },
+    {
+      "topic": "IPV6",
+      "cards": 10,
+      "understood": 0,
+      "correct": 13,
+      "seen": 21
+    },
+    {
+      "topic": "VLAN",
+      "cards": 5,
+      "understood": 0,
+      "correct": 5,
+      "seen": 8
+    },
+    {
+      "topic": "CDP",
+      "cards": 5,
+      "understood": 0,
+      "correct": 5,
+      "seen": 7
+    },
+    {
+      "topic": "NTP",
+      "cards": 5,
+      "understood": 0,
+      "correct": 5,
+      "seen": 7
+    },
+    {
+      "topic": "DNS",
+      "cards": 3,
+      "understood": 0,
+      "correct": 5,
+      "seen": 7
+    },
+    {
+      "topic": "ETHERNET",
+      "cards": 7,
+      "understood": 0,
+      "correct": 8,
+      "seen": 11
+    },
+    {
+      "topic": "ROUTING",
+      "cards": 8,
+      "understood": 0,
+      "correct": 6,
+      "seen": 8
+    },
+    {
+      "topic": "AUTOMATION",
+      "cards": 14,
+      "understood": 0,
+      "correct": 25,
+      "seen": 33
+    },
+    {
+      "topic": "WAN",
+      "cards": 2,
+      "understood": 0,
+      "correct": 2,
+      "seen": 2
+    },
+    {
+      "topic": "CABLING",
+      "cards": 2,
+      "understood": 0,
+      "correct": 2,
+      "seen": 2
+    },
+    {
+      "topic": "QOS",
+      "cards": 1,
+      "understood": 0,
+      "correct": 1,
+      "seen": 1
+    },
+    {
+      "topic": "TCP",
+      "cards": 1,
+      "understood": 0,
+      "correct": 1,
+      "seen": 1
+    }
+  ],
+  "added": [
+    {
+      "day": "2026-07-29",
+      "count": 2
+    },
+    {
+      "day": "2026-07-30",
+      "count": 33
+    },
+    {
+      "day": "2026-08-07",
+      "count": 24
+    },
+    {
+      "day": "2026-08-11",
+      "count": 34
+    },
+    {
+      "day": "2026-08-17",
+      "count": 36
+    },
+    {
+      "day": "2026-08-20",
+      "count": 37
+    }
+  ],
+  "days": [
+    {
+      "day": "2026-09-02",
+      "goal": 0,
+      "done": 21,
+      "answers": 37,
+      "correct": 21
+    },
+    {
+      "day": "2026-09-03",
+      "goal": 50,
+      "done": 50,
+      "answers": 75,
+      "correct": 50
+    },
+    {
+      "day": "2026-09-04",
+      "goal": 50,
+      "done": 37,
+      "answers": 59,
+      "correct": 37
+    }
+  ]
+}
