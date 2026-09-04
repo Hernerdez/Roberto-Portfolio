@@ -1,7 +1,7 @@
 "use client"
 
 import { TIMELINE } from "@/lib/homelab-data"
-import { LED, LedDot } from "./topology"
+import { LED, LedDot } from "@/components/ui/led-dot"
 
 export function Timeline({ onSelectNode }: { onSelectNode: (id: string) => void }) {
   return (

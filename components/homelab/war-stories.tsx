@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { WAR_STORIES, getStory, getNode } from "@/lib/homelab-data"
-import { LED } from "./topology"
+import { LED } from "@/components/ui/led-dot"
 
 /* Incident ids are a real chronological sequence — the numbering encodes order. */
 const INCIDENT_IDS = WAR_STORIES.map((s, i) => ({
