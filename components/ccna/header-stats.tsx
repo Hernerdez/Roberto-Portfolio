@@ -12,9 +12,14 @@ export function HeaderStats({ stats }: { stats: CcnaStats }) {
       </div>
       <div>
         {segments.map((s, i) => (
-          <span key={s} className="whitespace-nowrap">
-            {i > 0 && <span className="mx-2 text-[var(--hl-border-hi)]">·</span>}
-            {s}
+          <span key={s}>
+            {i > 0 && (
+              <>
+                {" "}
+                <span className="mx-1 text-[var(--hl-border-hi)]">·</span>{" "}
+              </>
+            )}
+            <span className="whitespace-nowrap">{s}</span>
           </span>
         ))}
       </div>
