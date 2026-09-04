@@ -2,22 +2,11 @@
 
 import { useEffect, useState } from "react"
 import { STATS } from "@/lib/homelab-data"
+import { TERMINAL_VARS } from "@/lib/terminal-theme"
 import { Topology } from "./topology"
 import { DetailPanel } from "./detail-panel"
 import { WarStoriesSection, WarStoryDialog } from "./war-stories"
 import { Timeline } from "./timeline"
-
-const HL_VARS = {
-  "--hl-bg": "#0a0a0c",
-  "--hl-surface": "#101014",
-  "--hl-surface2": "#16161b",
-  "--hl-border": "#232329",
-  "--hl-border-hi": "#3a3a44",
-  "--hl-fg": "#e8e8ea",
-  "--hl-mut": "#9a9aa4",
-  "--hl-dim": "#62626c",
-  "--hl-green": "#3fd68f",
-} as React.CSSProperties
 
 export function HomelabPageClient({ initialNodeId }: { initialNodeId?: string }) {
   const [selectedId, setSelectedId] = useState<string | null>(initialNodeId ?? null)
@@ -33,13 +22,18 @@ export function HomelabPageClient({ initialNodeId }: { initialNodeId?: string })
   }, [selectedId])
 
   return (
-    <div className="font-mono text-[var(--hl-fg)]" style={HL_VARS}>
+    <div className="font-mono text-[var(--hl-fg)]" style={TERMINAL_VARS}>
       {/* Stats bar */}
       <div className="mb-10 mt-2 text-center text-[12px] leading-relaxed text-[var(--hl-dim)]">
         {STATS.map((s, i) => (
-          <span key={s} className="whitespace-nowrap">
-            {i > 0 && <span className="mx-2 text-[var(--hl-border-hi)]">·</span>}
-            {s}
+          <span key={s}>
+            {i > 0 && (
+              <>
+                {" "}
+                <span className="mx-1 text-[var(--hl-border-hi)]">·</span>{" "}
+              </>
+            )}
+            <span className="whitespace-nowrap">{s}</span>
           </span>
         ))}
       </div>

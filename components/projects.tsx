@@ -36,6 +36,7 @@ const projects = [
     liveUrl: undefined,
     internalUrl: "/homelab",
     githubUrl: undefined,
+    contain: true,
   },
 ]
 
@@ -72,12 +73,12 @@ export function Projects() {
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col">
                   {project.image ? (
-                    <div className={`relative w-full h-48 mb-4 rounded-lg overflow-hidden border border-border ${project.id === 3 ? 'bg-neutral-900' : ''}`}>
+                    <div className={`relative w-full h-48 mb-4 rounded-lg overflow-hidden border border-border ${'contain' in project && project.contain ? 'bg-neutral-900' : ''}`}>
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className={project.id === 3 ? "object-contain p-2" : "object-cover"}
+                        className={"contain" in project && project.contain ? "object-contain p-2" : "object-cover"}
                         style={project.id === 1 ? { objectPosition: '30% center' } : { objectPosition: 'center' }}
                       />
                     </div>

@@ -4,7 +4,7 @@ import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
 import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { getNode, getStory } from "@/lib/homelab-data"
-import { LED, LedDot } from "./topology"
+import { LED, LedDot } from "@/components/ui/led-dot"
 
 interface DetailPanelProps {
   nodeId: string | null
