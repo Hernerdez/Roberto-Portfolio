@@ -38,17 +38,6 @@ const projects = [
     githubUrl: undefined,
     contain: true,
   },
-  {
-    id: 4,
-    title: "CCNA Drill",
-    description: "A phone-first spaced-repetition study app I built while preparing for the CCNA. Screenshot a missed practice question and it becomes a scheduled flashcard with a plain-English explanation of why the right answer is right.",
-    image: "/CCNADrill.png",
-    tags: ["Vanilla JS", "Supabase (Auth + RLS)", "Spaced repetition", "Vercel", "MIT"],
-    liveUrl: undefined,
-    internalUrl: "/ccna",
-    githubUrl: "https://github.com/Hernerdez/CCNA_Study",
-    contain: true,
-  },
 ]
 
 export function Projects() {
