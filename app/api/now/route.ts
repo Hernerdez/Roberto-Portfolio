@@ -8,10 +8,11 @@ export interface NowActivity {
   /** Event title from the "Now" calendar, or null to use the built-in schedule. */
   activity: string | null
   until: string | null
-  source: "calendar" | "none"
+  /** calendar = event found; idle = feed read, nothing scheduled now; unconfigured = no SCHEDULE_ICS_URL; error = feed unreachable */
+  source: "calendar" | "idle" | "unconfigured" | "error"
+  events?: number
 }
 
-const EMPTY: NowActivity = { activity: null, until: null, source: "none" }
 
 /** Reads the private iCal feed of a dedicated "Now" calendar (SCHEDULE_ICS_URL).
  *  Whatever event is happening right now becomes "I'm probably <title>".
@@ -19,7 +20,7 @@ const EMPTY: NowActivity = { activity: null, until: null, source: "none" }
 export async function GET() {
   // iCloud "Public Calendar" links start with webcal://; same feed over https.
   const url = process.env.SCHEDULE_ICS_URL?.replace(/^webcal:\/\//i, "https://")
-  if (!url) return NextResponse.json(EMPTY, { headers: cacheHeaders(300) })
+  if (!url) return NextResponse.json({ activity: null, until: null, source: "unconfigured" } satisfies NowActivity, { headers: cacheHeaders(300) })
   try {
     const events = await memo("now-ics", 5 * 60_000, async () => {
       const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(8000) })
@@ -28,11 +29,11 @@ export async function GET() {
     })
     const ev = currentEvent(events, new Date())
     const body: NowActivity = ev
-      ? { activity: ev.summary, until: ev.end.toISOString(), source: "calendar" }
-      : EMPTY
+      ? { activity: ev.summary, until: ev.end.toISOString(), source: "calendar", events: events.length }
+      : { activity: null, until: null, source: "idle", events: events.length }
     return NextResponse.json(body, { headers: cacheHeaders(60) })
   } catch (e) {
     console.error("[api/now]", e)
-    return NextResponse.json(EMPTY, { headers: { "Cache-Control": "private, no-store" } })
+    return NextResponse.json({ activity: null, until: null, source: "error" } satisfies NowActivity, { headers: { "Cache-Control": "private, no-store" } })
   }
 }
