@@ -1,55 +1,136 @@
-/* /ccna — typed content for the CCNA study case study.
+/* /ccna — typed content for the "how I passed the CCNA" page.
  *
  * PRIVACY RULE: nothing here may contain practice-exam content. No Boson
  * question text, choices, explanations, or trouble-card titles — ever.
- * ccna-stats.json is produced by `scripts/db.mjs export` in the CCNA_Study
- * repo, which selects only topic tags, timestamps and counters.
  */
-import statsJson from "./ccna-stats.json"
-import { LED } from "@/components/ui/led-dot"
-import { TERMINAL_HEX } from "@/lib/terminal-theme"
 
-// ---------- stats snapshot ----------
+// ---------- header ----------
 
-export interface TopicStat {
-  topic: string
-  cards: number
-  understood: number
-  correct: number
-  seen: number
-}
-export interface DayCount {
-  day: string // YYYY-MM-DD
-  count: number
-}
-export interface DayLogRow {
-  day: string // YYYY-MM-DD
-  goal: number
-  done: number
-  answers: number
-  correct: number
-}
-export interface CcnaStats {
-  generatedAt: string
-  exam: { date: string; result: string | null }
-  totals: {
-    cards: number
-    understood: number
-    learning: number
-    unseen: number
-    answers: number
-    correct: number
-    studyDays: number
-    streak: number
-  }
-  topics: TopicStat[]
-  added: DayCount[]
-  days: DayLogRow[]
+export const EXAM_NAME = "CCNA 200-301"
+export const PASSED_LABEL = "Passed · November 16, 2026"
+
+// TODO: paste the public Credly badge URL here (Credly → badge → Share → copy link).
+export const CREDLY_BADGE_URL = "CREDLY_BADGE_URL"
+
+export const INTRO =
+  "I'm an IT & Networking Lead running a multi-site enterprise on Cisco Meraki with a Cisco Nexus core; this page is what I actually used to pass and what I'd do again."
+
+// ---------- TL;DR ----------
+
+export interface TldrItem {
+  label: string
+  value: string
 }
 
-export const CCNA_STATS: CcnaStats = statsJson
+export const TLDR: TldrItem[] = [
+  { label: "Content", value: "Jeremy's IT Lab" },
+  { label: "Practice", value: "Boson ExSim + NetSim" },
+  { label: "Labs", value: "Packet Tracer + homelab" },
+  { label: "Retention", value: "CCNA Drill (app I built)" },
+]
 
-// ---------- content ----------
+export const SKILLS: string[] = [
+  "OSPF",
+  "Static / IPv6 routing",
+  "VLANs / STP",
+  "ACLs",
+  "NAT",
+  "Port security",
+  "DHCP snooping / DAI",
+  "SSH / AAA",
+]
+
+// ---------- resources ----------
+
+export type Cost = "Free" | "Paid" | "Free / Paid"
+
+export interface Resource {
+  name: string
+  href?: string
+  internal?: boolean
+  purpose: string
+  cost: Cost
+  take: string
+}
+
+export const DEMO_URL = "https://ccna-drill-sooty.vercel.app/?demo=1"
+export const REPO_URL = "https://github.com/Hernerdez/CCNA_Study"
+
+export const RESOURCES: Resource[] = [
+  {
+    name: "Jeremy's IT Lab",
+    href: "https://www.youtube.com/@JeremysITLab",
+    purpose: "Complete 200-301 video course with a Packet Tracer lab for nearly every lecture.",
+    cost: "Free",
+    take: "Watch in order, do every lab. If you only use one resource, use this one.",
+  },
+  {
+    name: "Boson ExSim-Max",
+    href: "https://www.boson.com/practice-exam/200-301-cisco-ccna-practice-exam",
+    purpose: "Practice exams that match the real exam's difficulty, wording and sim style.",
+    cost: "Paid",
+    take: "The explanations are the real value. Read every one, right or wrong.",
+  },
+  {
+    name: "Boson NetSim",
+    href: "https://www.boson.com/netsim-cisco-network-simulator",
+    purpose: "Guided CLI labs on a simulated IOS network.",
+    cost: "Paid",
+    take: "Best prep for the sims. It makes you type the commands, not recognize them.",
+  },
+  {
+    name: "Cisco Packet Tracer",
+    href: "https://www.netacad.com/cisco-packet-tracer",
+    purpose: "Network simulator for building and breaking your own topologies.",
+    cost: "Free",
+    take: "Random labs between lectures turned commands into muscle memory.",
+  },
+  {
+    name: "My homelab",
+    href: "/homelab",
+    internal: true,
+    purpose: "Real gear: VLANs, routing, remote access, the same configs the exam asks for.",
+    cost: "Free",
+    take: "Nothing sticks like fixing something you actually broke.",
+  },
+  {
+    name: "An LLM as a study partner",
+    purpose: "Organizing notes, explaining missed questions in plain English, quizzing me on weak topics.",
+    cost: "Free / Paid",
+    take: "Great for the why behind a wrong answer. Verify any config it gives you in Packet Tracer.",
+  },
+  {
+    name: "CCNA Drill",
+    href: DEMO_URL,
+    purpose: "The spaced-repetition app I built so every missed question came back until it stuck.",
+    cost: "Free",
+    take: "Demo needs no account; code is on GitHub. Details under The code below.",
+  },
+]
+
+// ---------- narrative ----------
+
+export const NARRATIVE: string[] = [
+  "June: Jeremy's IT Lab, lectures in order, a Packet Tracer lab after each one, and the same configs repeated in my homelab so the commands lived in my hands and not just in my notes.",
+  "July: Boson ExSim. Scores climbed, then flattened. The reason was obvious once I looked for it: I'd read the explanation for a missed question, nod, and never see that question again. The same concept would get me later on a different question.",
+  "So I built the tool I wanted. Every miss got screenshotted from my phone, transcribed into a card with a plain-English explanation of why the right answer is right, and drilled on a spaced-repetition schedule until it stuck. From then on, studying was a daily loop: clear the inbox, drill the day's batch, keep the streak. Boson NetSim labs closed the gap on the sims, and I passed on November 16.",
+]
+
+// ---------- tips ----------
+
+/** Plain text; `backticks` render as inline IOS commands. */
+export const TIPS: string[] = [
+  "Time your sims. Eight minutes max, then save and move on. Partial credit counts.",
+  "Read every task bullet before touching the CLI.",
+  "Start every sim with `show ip interface brief` and `show ip route`.",
+  "Learn wildcard math cold (255 − mask). Typing the mask as a wildcard costs whole sims.",
+  "Elections: \"priority\" means highest wins, except STP, where lowest wins.",
+  "ACLs: first match wins, implicit deny at the end.",
+  "Read the qualifiers: only, all, best, IEEE, syslog. They change the answer.",
+  "Subnet until it's automatic. Every minute spent subnetting on exam day is a minute taken from a sim.",
+]
+
+// ---------- the loop ----------
 
 export type LoopIcon = "camera" | "inbox" | "sparkles" | "repeat" | "check"
 
@@ -59,46 +140,6 @@ export interface LoopStep {
   detail: string
   icon: LoopIcon
 }
-
-export interface Resource {
-  name: string
-  href: string
-  internal?: boolean
-  blurb: string
-}
-
-export interface RepoCard {
-  name: string
-  repoUrl: string
-  demoUrl: string
-  stack: string[]
-  tests: string
-  license: string
-  notes: string[]
-}
-
-export interface CodeExcerpt {
-  file: string
-  lines: string
-  caption: string
-  code: string
-}
-
-export interface CcnaMilestone {
-  date: string
-  label: string
-  detail: string
-  planned?: boolean
-}
-
-export const DEMO_URL = "https://ccna-drill-sooty.vercel.app/?demo=1"
-export const REPO_URL = "https://github.com/Hernerdez/CCNA_Study"
-
-export const NARRATIVE: string[] = [
-  "In June I started Jeremy's IT Lab's CCNA course and worked through the lectures in order. Between videos I ran random Packet Tracer labs and practiced the same configs in my homelab, so the commands lived in my hands and not just in my notes.",
-  "Once the lectures were done I moved to Boson ExSim practice exams. Scores climbed, then flattened, and the reason was obvious once I looked for it: I would read the explanation for a missed question, nod, and never see that question again. The same concept would get me later on a different question.",
-  "So I built the tool I wanted. Every question I got wrong or didn't fully understand got screenshotted from my phone, transcribed into a card with a plain-English explanation of why the right answer is right, and drilled on a spaced-repetition schedule until it stuck. From then on, studying was a daily loop: clear the inbox, drill the day's batch, keep the streak.",
-]
 
 export const LOOP_STEPS: LoopStep[] = [
   {
@@ -136,34 +177,24 @@ export const LOOP_STEPS: LoopStep[] = [
   },
 ]
 
-export const RESOURCES: Resource[] = [
-  {
-    name: "Jeremy's IT Lab",
-    href: "https://www.youtube.com/@JeremysITLab",
-    blurb: "Free, complete 200-301 course on YouTube. Watched in order, notes and labs alongside.",
-  },
-  {
-    name: "Boson ExSim",
-    href: "https://www.boson.com/practice-exam/200-301-cisco-ccna-practice-exam",
-    blurb: "Practice exams closest to the real thing. Every miss became a card in the drill app.",
-  },
-  {
-    name: "Cisco Packet Tracer",
-    href: "https://www.netacad.com/cisco-packet-tracer",
-    blurb: "Random labs between lectures to turn commands into muscle memory.",
-  },
-  {
-    name: "My homelab",
-    href: "/homelab",
-    internal: true,
-    blurb: "Practiced the same configs on the network I already run: VLANs, routing, remote access.",
-  },
-  {
-    name: "CCNA Drill",
-    href: REPO_URL,
-    blurb: "The spaced-repetition app I built for the questions I missed. Code and demo below.",
-  },
-]
+// ---------- the code ----------
+
+export interface RepoCard {
+  name: string
+  repoUrl: string
+  demoUrl: string
+  stack: string[]
+  tests: string
+  license: string
+  notes: string[]
+}
+
+export interface CodeExcerpt {
+  file: string
+  lines: string
+  caption: string
+  code: string
+}
 
 export const REPO: RepoCard = {
   name: "CCNA Drill",
@@ -187,141 +218,22 @@ export const CODE_EXCERPT: CodeExcerpt = {
   file: "scheduler.js",
   lines: "rate() · trimmed",
   caption:
-    "A wrong answer resets the card to today and lowers its ease. A right one multiplies the interval by the ease. The 10-day cap means nothing can hide until after the exam, and four in a row marks a card understood.",
+    "Wrong resets the card to today and lowers its ease. Right multiplies the interval by the ease, capped at 10 days so nothing hides until after the exam. Four in a row marks it understood.",
   code: [
     "rate(progress, rating, today) {",
     "  const p = { ...progress };",
     "  if (rating === 'again') {",
-    "    p.streak = 0;",
-    "    p.intervalDays = 0;",
+    "    p.streak = 0; p.intervalDays = 0; p.lapses += 1;",
     "    p.ease = Math.max(1.3, Math.round((p.ease - 0.2) * 100) / 100);",
-    "    p.lapses += 1;",
-    "    p.state = 'learning';",
-    "    p.due = today;",
+    "    p.state = 'learning'; p.due = today;",
     "    return p;",
     "  }",
-    "  // ...'hard' and 'easy' branches trimmed...",
-    "  if (rating === 'good') {",
-    "    p.streak += 1;",
-    "    p.intervalDays = p.intervalDays === 0 ? 1 : Math.round(p.intervalDays * p.ease);",
-    "  }",
+    "  p.streak += 1;",
+    "  p.intervalDays = p.intervalDays === 0 ? 1 : Math.round(p.intervalDays * p.ease);",
     "  p.intervalDays = Math.min(Scheduler.CAP_DAYS, p.intervalDays);        // 10",
     "  if (p.streak >= Scheduler.UNDERSTOOD_STREAK) p.state = 'understood'; // 4",
     "  p.due = Scheduler.addDays(today, p.intervalDays);",
     "  return p;",
     "},",
   ].join("\n"),
-}
-
-export const TIMELINE: CcnaMilestone[] = [
-  {
-    date: "Jun 2026",
-    label: "Lectures and labs",
-    detail: "Started Jeremy's IT Lab. Packet Tracer labs between videos, the same configs practiced in the homelab.",
-  },
-  {
-    date: "Jul 2026",
-    label: "Finished the course, started Boson",
-    detail: "Practice exams exposed the pattern: missed questions never got a second look.",
-  },
-  {
-    date: "Jul 29, 2026",
-    label: "CCNA Drill, spec to shipped in a day",
-    detail:
-      "v1: static site, browser-only progress, SM-2-style scheduler with tests. v2 the same day: accounts, cloud sync, screenshot inbox with AI transcription.",
-  },
-  {
-    date: "Jul 30–31, 2026",
-    label: "Auto-scheduling, exhibits, matching cards",
-    detail:
-      "Answers rate themselves. Exhibit crops from screenshots, drag-and-drop matching cards, CLI output rendered as terminal panels.",
-  },
-  {
-    date: "Aug 2026",
-    label: "The daily loop",
-    detail: "Clear the inbox, drill the day's batch, flag what still doesn't click for the next session.",
-  },
-  {
-    date: "Sep 2, 2026",
-    label: "Log tab, streaks, public demo",
-    detail: "Daily log with completion and accuracy. Demo mode with 30 original questions, README and MIT license.",
-  },
-  {
-    date: "Sep 14, 2026",
-    label: "Exam",
-    detail: "CCNA 200-301.",
-    planned: true,
-  },
-]
-
-// ---------- helpers ----------
-
-/** Percent 0–100, or null when there are no answers. */
-export function pct(correct: number, seen: number): number | null {
-  return seen > 0 ? Math.round((100 * correct) / seen) : null
-}
-
-/** LED semantics for an accuracy value: <60 red, <80 amber, else green; null = no data. */
-export function accuracyColor(acc: number | null): string {
-  if (acc === null) return TERMINAL_HEX.dim
-  if (acc < 60) return LED.red
-  if (acc < 80) return LED.amber
-  return LED.green
-}
-
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-
-/** "2026-09-02" → "Sep 2". Parsed as local midnight so the day never shifts. */
-export function fmtDay(day: string): string {
-  const d = new Date(day + "T00:00:00")
-  return `${MONTHS[d.getMonth()]} ${d.getDate()}`
-}
-
-/** "2026-09-14" → "Sep 14, 2026" */
-export function fmtDayLong(day: string): string {
-  const d = new Date(day + "T00:00:00")
-  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
-}
-
-function addDays(day: string, n: number): string {
-  const d = new Date(day + "T00:00:00")
-  d.setDate(d.getDate() + n)
-  const p = (x: number) => String(x).padStart(2, "0")
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
-}
-
-/** Cumulative card count per day from first add-day through endDay, gaps carried forward. */
-export function cumulativeSeries(added: DayCount[], endDay: string): { day: string; total: number }[] {
-  if (added.length === 0) return []
-  const byDay = new Map(added.map((a) => [a.day, a.count]))
-  const out: { day: string; total: number }[] = []
-  let total = 0
-  const last = endDay > added[added.length - 1].day ? endDay : added[added.length - 1].day
-  for (let day = added[0].day; day <= last; day = addDays(day, 1)) {
-    total += byDay.get(day) ?? 0
-    out.push({ day, total })
-  }
-  return out
-}
-
-/** Header stats bar segments. "logged days" because the daily log only started Sep 2. */
-export function headerStats(s: CcnaStats): string[] {
-  const { totals } = s
-  return [
-    `${totals.cards} cards`,
-    `${totals.answers} answers`,
-    `${totals.streak}-day streak`,
-    `${totals.studyDays} logged day${totals.studyDays === 1 ? "" : "s"}`,
-  ]
-}
-
-export function outcomeLine(s: CcnaStats): string {
-  return s.exam.result ? `${s.exam.result} · ${fmtDayLong(s.exam.date)}` : `Exam ${fmtDayLong(s.exam.date)} · result pending`
-}
-
-/** Snapshot date as YYYY-MM-DD in local time, used as the end of the growth series. */
-export function snapshotDay(s: CcnaStats): string {
-  const d = new Date(s.generatedAt)
-  const p = (x: number) => String(x).padStart(2, "0")
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
 }

@@ -4,9 +4,9 @@ import { ArrowLeft } from "lucide-react"
 import { CcnaPageClient } from "@/components/ccna/ccna-page"
 
 export const metadata: Metadata = {
-  title: "CCNA — Roberto Hernandez",
+  title: "CCNA 200-301 · Passed — Roberto Hernandez",
   description:
-    "How I studied for the CCNA: Jeremy's IT Lab, Packet Tracer, my homelab, Boson ExSim, and CCNA Drill, the spaced-repetition app I built for every question I missed. Real study numbers, the loop, and the code.",
+    "How I passed the CCNA 200-301 and the study resources I'd use again: Jeremy's IT Lab, Boson ExSim and NetSim, Packet Tracer, my homelab, exam-day tips, and CCNA Drill, the spaced-repetition app I built for every question I missed.",
 }
 
 export default function CcnaPage() {
@@ -20,7 +20,7 @@ export default function CcnaPage() {
           <ArrowLeft className="h-3.5 w-3.5" /> Back to Portfolio
         </Link>
         <h1 className="mb-1 font-mono text-3xl font-light tracking-wider text-[#e8e8ea] md:text-4xl">
-          CCNA
+          CCNA 200-301
         </h1>
         <CcnaPageClient />
       </div>

@@ -26,18 +26,3 @@ export const TERMINAL_VARS = {
   "--hl-dim": TERMINAL_HEX.dim,
   "--hl-green": TERMINAL_HEX.green,
 } as CSSProperties
-
-// shadcn HSL tokens, overridden locally so components that use the global
-// theme classes (bg-background, text-muted-foreground, border-border — e.g.
-// components/ui/chart.tsx) render dark regardless of the visitor's OS theme.
-export const TERMINAL_TOKEN_VARS = {
-  "--background": "240 9% 4%",
-  "--foreground": "240 5% 91%",
-  "--card": "240 11% 7%",
-  "--card-foreground": "240 5% 91%",
-  "--popover": "240 11% 7%",
-  "--popover-foreground": "240 5% 91%",
-  "--muted": "240 11% 7%",
-  "--muted-foreground": "240 5% 62%",
-  "--border": "240 8% 15%",
-} as CSSProperties
