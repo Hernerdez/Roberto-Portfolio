@@ -67,11 +67,15 @@ Save as `GITHUB_TOKEN`. (Unauthenticated calls from Vercel's shared IPs hit the 
 
 ### "Now" calendar (what the Houston clock says I'm doing)
 
-Make a separate calendar named `Now` (Google Calendar → "+" next to Other calendars → Create).
-Put routine events in it: "training", "eating lunch", "driving home", "on call" (all-day), with
-weekly repeats. Only this calendar is read, so nothing from your real calendar is exposed.
-Settings for that calendar → Integrate calendar → copy **Secret address in iCal format** →
-`SCHEDULE_ICS_URL`. The site shows the current event's title as "I'm probably <title>" and
+Make a separate calendar named `Now` and put routine events in it: "training", "eating lunch",
+"driving home", "on call" (all-day), with weekly repeats. Only this calendar is read, so nothing
+from your real calendar is exposed.
+
+- **Apple Calendar (iCloud):** right-click the calendar → Share Calendar… → check Public Calendar →
+  copy the `webcal://…icloud.com/published/…` link. Feeds lag edits by a few minutes.
+- **Google Calendar:** calendar settings → Integrate calendar → Secret address in iCal format.
+
+Paste the link as `SCHEDULE_ICS_URL` (`webcal://` is accepted). The site shows the current event's title as "I'm probably <title>" and
 falls back to the weekday table in `lib/live-data.ts` when nothing is scheduled.
 
 ### Homelab status

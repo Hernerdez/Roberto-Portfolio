@@ -17,7 +17,8 @@ const EMPTY: NowActivity = { activity: null, until: null, source: "none" }
  *  Whatever event is happening right now becomes "I'm probably <title>".
  *  The feed is refetched at most every 5 minutes; the answer is cached 60 s. */
 export async function GET() {
-  const url = process.env.SCHEDULE_ICS_URL
+  // iCloud "Public Calendar" links start with webcal://; same feed over https.
+  const url = process.env.SCHEDULE_ICS_URL?.replace(/^webcal:\/\//i, "https://")
   if (!url) return NextResponse.json(EMPTY, { headers: cacheHeaders(300) })
   try {
     const events = await memo("now-ics", 5 * 60_000, async () => {
