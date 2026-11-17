@@ -49,19 +49,14 @@ The app owner's Spotify account must have **Premium** (Development Mode rule sin
 
 ### Strava refresh token
 
-1. [strava.com/settings/api](https://www.strava.com/settings/api) → create an app. Authorization Callback Domain: `localhost`.
-2. Open in a browser (replace `ID`):
-   ```
-   https://www.strava.com/oauth/authorize?client_id=ID&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=activity:read_all
-   ```
-   Authorize, then copy `code` from the `localhost/exchange_token?code=...` URL.
-3. Exchange it:
-   ```bash
-   curl -X POST https://www.strava.com/oauth/token \
-     -d client_id=ID -d client_secret=SECRET -d code=CODE -d grant_type=authorization_code
-   ```
-   Save `refresh_token` as `STRAVA_REFRESH_TOKEN`. Strava may rotate it; if the Vercel function logs
-   "Strava rotated the refresh token", paste the new value into the project settings.
+Strava now requires a paid Strava subscription for API access, so this card is parked.
+The route and card stay in the codebase and hide themselves while the variables are unset.
+If that changes: create an app at strava.com/settings/api (callback domain `localhost`),
+authorize with `scope=activity:read_all` via
+`https://www.strava.com/oauth/authorize?client_id=ID&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=activity:read_all`,
+then exchange the code with
+`curl -X POST https://www.strava.com/oauth/token -d client_id=ID -d client_secret=SECRET -d code=CODE -d grant_type=authorization_code`
+and save `refresh_token` as `STRAVA_REFRESH_TOKEN`.
 
 ### GitHub token
 
