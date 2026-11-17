@@ -1,3 +1,4 @@
 checks.local.yaml
 status.db*
 __pycache__/
+.env

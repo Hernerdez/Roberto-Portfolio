@@ -1,0 +1,17 @@
+services:
+  homelab-status:
+    build: .
+    container_name: homelab-status
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      STATUS_TOKEN: ${STATUS_TOKEN:?set STATUS_TOKEN in .env}
+      INTERVAL_SECONDS: "60"
+    volumes:
+      - homelab-status-data:/data
+      # real hosts live in checks.local.yaml (gitignored); checks.yaml is the example
+      - ./checks.local.yaml:/app/checks.yaml:ro
+
+volumes:
+  homelab-status-data:

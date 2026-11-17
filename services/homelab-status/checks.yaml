@@ -1,16 +1,44 @@
-# One entry per service. `node` must match a node id in lib/homelab-data.ts
-# (pangolin, gateway, sw1, cluster, pve, pve2, pve3, vm100, vm101, vm200, vm300, cameras).
-# Only ids, names and nodes are ever published; hosts/urls stay on the lab.
+# EXAMPLE ONLY. The real file lives on the host that runs the service and is
+# never committed (this repo is public). Copy this to checks.local.yaml, fill in
+# your hosts, and mount it at /app/checks.yaml (see docker-compose.yml).
+#
+# One entry per service. `node` must match a node id in lib/homelab-data.ts:
+#   pangolin gateway sw1 cluster pve pve2 pve3 vm100 vm101 vm200 vm300 cameras
+# Only id, name and node are ever published by /status; hosts and ports stay on the LAN.
+#
+# Check types:
+#   http  url: ...            up when the response status is < 400 (TLS verify off)
+#   tcp   host: ..., port: .. up when the port accepts a connection
 checks:
-  - { id: pangolin,  name: Pangolin,          node: pangolin, type: http, url: "https://pangolin.example.com/" }
-  - { id: gateway,   name: Gateway,           node: gateway,  type: tcp,  host: 192.168.1.1,   port: 443 }
-  - { id: sw1,       name: Core switch,       node: sw1,      type: tcp,  host: 192.168.1.2,   port: 22 }
-  - { id: pve,       name: Proxmox pve,       node: pve,      type: tcp,  host: 192.168.1.10,  port: 8006 }
-  - { id: pve2,      name: Proxmox pve2,      node: pve2,     type: tcp,  host: 192.168.1.11,  port: 8006 }
-  - { id: pve3,      name: Proxmox pve3,      node: pve3,     type: tcp,  host: 192.168.1.12,  port: 8006 }
-  - { id: vm100,     name: Docker host,       node: vm100,    type: tcp,  host: 192.168.1.100, port: 22 }
-  - { id: vm101,     name: Newt tunnel,       node: vm101,    type: tcp,  host: 192.168.1.101, port: 22 }
-  - { id: vm200,     name: Immich,            node: vm200,    type: http, url: "http://192.168.1.200:2283/api/server/ping" }
-  - { id: vm300,     name: NVR,               node: vm300,    type: http, url: "http://192.168.1.30:5000/" }
-  - { id: cam1,      name: Camera 1,          node: cameras,  type: tcp,  host: 192.168.1.51,  port: 554 }
-  - { id: cam2,      name: Camera 2,          node: cameras,  type: tcp,  host: 192.168.1.52,  port: 554 }
+  # WAN edge. The `tunnel` check goes out to the internet and back in through
+  # Pangolin → Newt, so it proves the whole public path, not just the LAN.
+  - { id: pangolin, name: Pangolin VPS,   node: pangolin, type: http, url: "https://pangolin.example.com/" }
+  - { id: tunnel,   name: Newt tunnel,    node: vm101,    type: http, url: "https://jellyfin.pangolin.example.com/health" }
+
+  # LAN
+  - { id: gateway,  name: Gateway,        node: gateway,  type: tcp,  host: GATEWAY_IP, port: 53 }
+  - { id: sw1,      name: sw1,            node: sw1,      type: tcp,  host: SWITCH_IP,  port: 80 }
+
+  # Hypervisors (Proxmox web UI)
+  - { id: pve,      name: pve,            node: pve,      type: tcp,  host: PVE_IP,  port: 8006 }
+  - { id: pve2,     name: pve2,           node: pve2,     type: tcp,  host: PVE2_IP, port: 8006 }
+  - { id: pve3,     name: pve3,           node: pve3,     type: tcp,  host: PVE3_IP, port: 8006 }
+
+  # Docker host: use each app's own health/ping endpoint where it has one
+  - { id: jellyfin, name: Jellyfin,       node: vm100,    type: http, url: "http://VM100_IP:8096/health" }
+  - { id: radarr,   name: Radarr,         node: vm100,    type: http, url: "http://VM100_IP:7878/ping" }
+  - { id: sonarr,   name: Sonarr,         node: vm100,    type: http, url: "http://VM100_IP:8989/ping" }
+  - { id: sabnzbd,  name: SABnzbd,        node: vm100,    type: http, url: "http://VM100_IP:8080/" }
+  - { id: prowlarr, name: Prowlarr,       node: vm100,    type: http, url: "http://VM100_IP:9696/ping" }
+  - { id: seerr,    name: Jellyseerr,     node: vm100,    type: http, url: "http://VM100_IP:5055/" }
+  - { id: homarr,   name: Homarr,         node: vm100,    type: http, url: "http://VM100_IP:7575/" }
+
+  # Photos
+  - { id: immich,   name: Immich,         node: vm200,    type: http, url: "http://VM200_IP:2283/api/server/ping" }
+
+  # NVR: check the authenticated port only, never the internal one
+  - { id: frigate,  name: Frigate,        node: vm300,    type: tcp,  host: VM300_IP, port: 8971 }
+
+  # Cameras (RTSP)
+  - { id: cam1,     name: Camera 1,       node: cameras,  type: tcp,  host: CAM1_IP, port: 554 }
+  - { id: cam2,     name: Camera 2,       node: cameras,  type: tcp,  host: CAM2_IP, port: 554 }
