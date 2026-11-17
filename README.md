@@ -73,3 +73,51 @@ Save as `GITHUB_TOKEN`. (Unauthenticated calls from Vercel's shared IPs hit the 
 
 See [`services/homelab-status/README.md`](services/homelab-status/README.md): a small FastAPI
 service that runs on the cluster, is exposed through Pangolin, and feeds `/api/homelab`.
+
+## Spotify: ready-to-paste commands for this app
+
+Client ID `8632a02509ac4d6596de0178f6f8053a` is public by design. The client secret, the
+one-time `code`, and the refresh token are not: keep them out of git and out of chat.
+
+Use whichever block matches the redirect URI you saved in the Spotify dashboard. If the
+dashboard flagged the `127.0.0.1` one as unsafe, use the second block (the page on
+hernerdez.com doesn't exist; the `code` still lands in the address bar on the 404).
+
+**Option A: redirect URI `http://127.0.0.1:3000/callback`**
+
+1. Open in a browser and approve:
+   ```
+   https://accounts.spotify.com/authorize?client_id=8632a02509ac4d6596de0178f6f8053a&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&scope=user-read-currently-playing%20user-read-recently-played
+   ```
+2. Copy everything after `code=` from the address bar, then within a few minutes:
+   ```bash
+   curl -X POST https://accounts.spotify.com/api/token \
+     -u "8632a02509ac4d6596de0178f6f8053a:PASTE_CLIENT_SECRET" \
+     -d grant_type=authorization_code -d code=PASTE_CODE \
+     -d redirect_uri=http://127.0.0.1:3000/callback
+   ```
+
+**Option B: redirect URI `https://hernerdez.com/spotify-callback`**
+
+1. Open in a browser and approve:
+   ```
+   https://accounts.spotify.com/authorize?client_id=8632a02509ac4d6596de0178f6f8053a&response_type=code&redirect_uri=https%3A%2F%2Fhernerdez.com%2Fspotify-callback&scope=user-read-currently-playing%20user-read-recently-played
+   ```
+2. Copy everything after `code=` from the address bar, then within a few minutes:
+   ```bash
+   curl -X POST https://accounts.spotify.com/api/token \
+     -u "8632a02509ac4d6596de0178f6f8053a:PASTE_CLIENT_SECRET" \
+     -d grant_type=authorization_code -d code=PASTE_CODE \
+     -d redirect_uri=https://hernerdez.com/spotify-callback
+   ```
+
+The JSON reply contains `refresh_token`. Put these three in `.env.local` (and later in Vercel):
+
+```
+SPOTIFY_CLIENT_ID=8632a02509ac4d6596de0178f6f8053a
+SPOTIFY_CLIENT_SECRET=...
+SPOTIFY_REFRESH_TOKEN=...
+```
+
+Then restart `npm run dev` and open `http://localhost:3000/api/spotify` to see the JSON.
+
