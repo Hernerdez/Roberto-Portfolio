@@ -3,12 +3,15 @@
 import { getNode, isEdgeActive, pathsForNode, DATA_PATHS } from "@/lib/homelab-data"
 
 import { LED, LedDot } from "@/components/ui/led-dot"
+import { ledFor, type LiveByNode } from "./live-status"
 
 interface TopologyProps {
   selectedId: string | null
   hoveredId: string | null
   onSelect: (id: string) => void
   onHover: (id: string | null) => void
+  /** live up/down from /api/homelab, null when unavailable */
+  live: LiveByNode | null
 }
 
 function NodeCard({
@@ -22,7 +25,8 @@ function NodeCard({
 }) {
   const node = getNode(id)
   if (!node) return null
-  const { selectedId, hoveredId, onSelect, onHover } = topology
+  const { selectedId, hoveredId, onSelect, onHover, live } = topology
+  const led = ledFor(node, live)
 
   const activePaths = pathsForNode(hoveredId)
   const activeNodes = new Set<string>()
@@ -40,7 +44,7 @@ function NodeCard({
       onFocus={() => onHover(id)}
       onBlur={() => onHover(null)}
       aria-haspopup="dialog"
-      aria-label={`${node.title} — open details`}
+      aria-label={`${node.title} (${led.label}) — open details`}
       className={[
         "text-left rounded-md border px-4 py-3 transition-all duration-150",
         "bg-[var(--hl-surface)] hover:bg-[var(--hl-surface2)]",
@@ -69,7 +73,9 @@ function NodeCard({
               ▲{incidents}
             </span>
           )}
-          <LedDot color={node.status === "planned" ? LED.amber : LED.green} />
+          <span title={led.label} className="flex">
+            <LedDot color={led.color} />
+          </span>
         </span>
       </span>
       {node.subtitle && (
@@ -224,6 +230,11 @@ export function Topology(props: TopologyProps) {
         <span className="flex items-center gap-1.5">
           <LedDot color={LED.amber} size={6} /> planned
         </span>
+        {props.live && (
+          <span className="flex items-center gap-1.5">
+            <LedDot color={LED.red} size={6} /> down
+          </span>
+        )}
         <span className="flex items-center gap-1.5">
           <span style={{ color: LED.red }}>▲</span> incident history
         </span>

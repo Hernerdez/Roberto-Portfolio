@@ -34,3 +34,5 @@ next-env.d.ts
 .Trashes
 ehthumbs.db
 Thumbs.db
+# keep the template, ignore real env files
+!.env.example

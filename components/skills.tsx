@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Database, Layout, Network, Server, ShieldCheck, Smartphone } from "lucide-react"
 
 // Top row: networking and infrastructure (the day job). Bottom row: software.
-const skillCategories = [
+export const skillCategories = [
   {
     id: 1,
     title: "Networking",

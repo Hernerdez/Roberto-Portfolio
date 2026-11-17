@@ -119,3 +119,34 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Live widgets: Spotify equalizer bars and the terminal caret.
+   Both stay static when the visitor prefers reduced motion. */
+.eq-bar {
+  height: 40%;
+}
+.caret-blink {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .eq-bar {
+    animation: eq-bar 0.9s ease-in-out infinite;
+  }
+  .caret-blink {
+    animation: caret-blink 1s steps(2, start) infinite;
+  }
+}
+@keyframes eq-bar {
+  0%,
+  100% {
+    height: 30%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+@keyframes caret-blink {
+  to {
+    opacity: 0;
+  }
+}

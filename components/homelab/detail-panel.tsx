@@ -5,11 +5,13 @@ import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { getNode, getStory } from "@/lib/homelab-data"
 import { LED, LedDot } from "@/components/ui/led-dot"
+import { ledFor, type LiveByNode } from "./live-status"
 
 interface DetailPanelProps {
   nodeId: string | null
   onClose: () => void
   onOpenStory: (storyId: string) => void
+  live: LiveByNode | null
 }
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -20,11 +22,11 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
-function PanelBody({ nodeId, onOpenStory }: { nodeId: string; onOpenStory: (id: string) => void }) {
+function PanelBody({ nodeId, onOpenStory, live }: { nodeId: string; onOpenStory: (id: string) => void; live: LiveByNode | null }) {
   const node = getNode(nodeId)
   if (!node) return null
-  const statusLabel =
-    node.status === "planned" ? "planned" : node.status === "critical-path" ? "running · critical path" : "running"
+  const led = ledFor(node, live)
+  const liveServices = live?.get(node.id) ?? []
 
   return (
     <div className="flex flex-col gap-5 font-mono">
@@ -38,9 +40,9 @@ function PanelBody({ nodeId, onOpenStory }: { nodeId: string; onOpenStory: (id: 
           <div className="mt-1 text-[11px] text-[var(--hl-dim)]">{node.subtitle}</div>
         )}
         <div className="mt-2 flex items-center gap-3 text-[11px]">
-          <span className="flex items-center gap-1.5" style={{ color: LED.green }}>
-            <LedDot color={node.status === "planned" ? LED.amber : LED.green} size={6} />
-            {statusLabel}
+          <span className="flex items-center gap-1.5" style={{ color: led.color }}>
+            <LedDot color={led.color} size={6} />
+            {led.label}
           </span>
           {node.ip && <span className="text-[var(--hl-mut)]">{node.ip}</span>}
         </div>
@@ -67,6 +69,22 @@ function PanelBody({ nodeId, onOpenStory }: { nodeId: string; onOpenStory: (id: 
           <p className="border-l-2 border-[var(--hl-border-hi)] pl-3 text-[12px] leading-relaxed text-[var(--hl-mut)]">
             {node.why}
           </p>
+        </div>
+      )}
+
+      {/* Live status */}
+      {liveServices.length > 0 && (
+        <div className="border-t border-[var(--hl-border)] pt-4">
+          <SectionLabel>live · 30d uptime</SectionLabel>
+          <div className="flex flex-col gap-1.5">
+            {liveServices.map((s) => (
+              <div key={s.id} className="flex items-center gap-2 text-[11px]">
+                <LedDot color={s.up ? LED.green : LED.red} size={6} />
+                <span className="text-[var(--hl-fg)]">{s.name}</span>
+                <span className="ml-auto tabular-nums text-[var(--hl-mut)]">{s.uptime30d.toFixed(2)}%</span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
@@ -127,7 +145,7 @@ function PanelBody({ nodeId, onOpenStory }: { nodeId: string; onOpenStory: (id: 
   )
 }
 
-export function DetailPanel({ nodeId, onClose, onOpenStory }: DetailPanelProps) {
+export function DetailPanel({ nodeId, onClose, onOpenStory, live }: DetailPanelProps) {
   const isMobile = useIsMobile()
   const node = nodeId ? getNode(nodeId) : undefined
   const open = !!node
@@ -152,7 +170,7 @@ export function DetailPanel({ nodeId, onClose, onOpenStory }: DetailPanelProps) 
         >
           <DrawerTitle className="sr-only">{node?.title ?? "Node details"}</DrawerTitle>
           <div className="max-h-[80vh] overflow-y-auto px-5 pb-8 pt-2">
-            {nodeId && <PanelBody nodeId={nodeId} onOpenStory={onOpenStory} />}
+            {nodeId && <PanelBody nodeId={nodeId} onOpenStory={onOpenStory} live={live} />}
           </div>
         </DrawerContent>
       </Drawer>
@@ -167,7 +185,7 @@ export function DetailPanel({ nodeId, onClose, onOpenStory }: DetailPanelProps) 
         style={panelVars}
       >
         <SheetTitle className="sr-only">{node?.title ?? "Node details"}</SheetTitle>
-        {nodeId && <PanelBody nodeId={nodeId} onOpenStory={onOpenStory} />}
+        {nodeId && <PanelBody nodeId={nodeId} onOpenStory={onOpenStory} live={live} />}
       </SheetContent>
     </Sheet>
   )

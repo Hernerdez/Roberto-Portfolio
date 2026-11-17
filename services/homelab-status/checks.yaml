@@ -1,0 +1,16 @@
+# One entry per service. `node` must match a node id in lib/homelab-data.ts
+# (pangolin, gateway, sw1, cluster, pve, pve2, pve3, vm100, vm101, vm200, vm300, cameras).
+# Only ids, names and nodes are ever published; hosts/urls stay on the lab.
+checks:
+  - { id: pangolin,  name: Pangolin,          node: pangolin, type: http, url: "https://pangolin.example.com/" }
+  - { id: gateway,   name: Gateway,           node: gateway,  type: tcp,  host: 192.168.1.1,   port: 443 }
+  - { id: sw1,       name: Core switch,       node: sw1,      type: tcp,  host: 192.168.1.2,   port: 22 }
+  - { id: pve,       name: Proxmox pve,       node: pve,      type: tcp,  host: 192.168.1.10,  port: 8006 }
+  - { id: pve2,      name: Proxmox pve2,      node: pve2,     type: tcp,  host: 192.168.1.11,  port: 8006 }
+  - { id: pve3,      name: Proxmox pve3,      node: pve3,     type: tcp,  host: 192.168.1.12,  port: 8006 }
+  - { id: vm100,     name: Docker host,       node: vm100,    type: tcp,  host: 192.168.1.100, port: 22 }
+  - { id: vm101,     name: Newt tunnel,       node: vm101,    type: tcp,  host: 192.168.1.101, port: 22 }
+  - { id: vm200,     name: Immich,            node: vm200,    type: http, url: "http://192.168.1.200:2283/api/server/ping" }
+  - { id: vm300,     name: NVR,               node: vm300,    type: http, url: "http://192.168.1.30:5000/" }
+  - { id: cam1,      name: Camera 1,          node: cameras,  type: tcp,  host: 192.168.1.51,  port: 554 }
+  - { id: cam2,      name: Camera 2,          node: cameras,  type: tcp,  host: 192.168.1.52,  port: 554 }

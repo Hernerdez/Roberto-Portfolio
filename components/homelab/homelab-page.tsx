@@ -7,11 +7,17 @@ import { Topology } from "./topology"
 import { DetailPanel } from "./detail-panel"
 import { WarStoriesSection, WarStoryDialog } from "./war-stories"
 import { Timeline } from "./timeline"
+import { LiveSummary } from "./live-summary"
+import { groupByNode } from "./live-status"
+import { useLiveData } from "@/hooks/use-live-data"
+import type { HomelabStatus } from "@/app/api/homelab/route"
 
 export function HomelabPageClient({ initialNodeId }: { initialNodeId?: string }) {
   const [selectedId, setSelectedId] = useState<string | null>(initialNodeId ?? null)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [storyId, setStoryId] = useState<string | null>(null)
+  const { data: liveStatus } = useLiveData<HomelabStatus>("/api/homelab", 30_000)
+  const live = groupByNode(liveStatus)
 
   // Keep ?node= in sync so any state is shareable as a deep link.
   useEffect(() => {
@@ -38,12 +44,15 @@ export function HomelabPageClient({ initialNodeId }: { initialNodeId?: string })
         ))}
       </div>
 
+      <LiveSummary status={liveStatus} />
+
       <div id="hl-topology" className="mx-auto max-w-3xl scroll-mt-8">
         <Topology
           selectedId={selectedId}
           hoveredId={hoveredId}
           onSelect={setSelectedId}
           onHover={setHoveredId}
+          live={live}
         />
       </div>
 
@@ -61,6 +70,7 @@ export function HomelabPageClient({ initialNodeId }: { initialNodeId?: string })
         nodeId={selectedId}
         onClose={() => setSelectedId(null)}
         onOpenStory={setStoryId}
+        live={live}
       />
       <WarStoryDialog storyId={storyId} onClose={() => setStoryId(null)} />
 

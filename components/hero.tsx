@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Linkedin, Instagram } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ReactNode } from "react"
+import { TypewriterCycle } from "@/components/typewriter-cycle"
+import { HERO_PHRASES } from "@/lib/live-data"
 
 // AnimatedText component for per-character animation
 function AnimatedText({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) {
@@ -38,6 +40,7 @@ export function Hero() {
   const [showNavbar, setShowNavbar] = useState(false)
   const fullText = "Network Engineer & Software Developer"
   const [showCursor, setShowCursor] = useState(true)
+  const h2Done = typedText.length >= fullText.length
 
   useEffect(() => {
     setShowIcons(false);
@@ -103,13 +106,24 @@ export function Hero() {
     },
     {
       element: (
-        <h2 className="text-2xl md:text-3xl font-light tracking-wider mb-6">
+        <h2 className="text-2xl md:text-3xl font-light tracking-wider mb-3">
           {typedText}
-          <span className={`${showCursor ? "opacity-100" : "opacity-0"}`}>|</span>
+          {!h2Done && <span className={`${showCursor ? "opacity-100" : "opacity-0"}`}>|</span>}
         </h2>
       ),
       delay: 0.2,
       animation: { initial: { opacity: 0, x: -50, y: 50 }, animate: { opacity: 1, x: 0, y: 0 } }
+    },
+    {
+      element: (
+        <TypewriterCycle
+          phrases={HERO_PHRASES}
+          active={h2Done}
+          className="block font-mono text-base md:text-lg text-muted-foreground tracking-wide mb-6"
+        />
+      ),
+      delay: 0.3,
+      animation: { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } }
     },
     {
       element: (
