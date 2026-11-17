@@ -12,8 +12,7 @@ export const PASSED_LABEL = "Passed · November 16, 2026"
 // TODO: paste the public Credly badge URL here (Credly → badge → Share → copy link).
 export const CREDLY_BADGE_URL = "CREDLY_BADGE_URL"
 
-export const INTRO =
-  "I'm an IT & Networking Lead running a multi-site enterprise on Cisco Meraki with a Cisco Nexus core; this page is what I actually used to pass and what I'd do again."
+export const INTRO = "This page is what I actually used to pass and what I'd do again."
 
 // ---------- TL;DR ----------
 
