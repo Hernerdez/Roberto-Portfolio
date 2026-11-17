@@ -23,6 +23,7 @@ matching card hides itself, so each widget can be enabled independently.
 | `/api/strava` | Latest Run | `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN` | 5 min |
 | `/api/github` | Contributions + last commit | `GITHUB_TOKEN` | 1 h |
 | `/api/homelab` | Live topology on `/homelab` | `HOMELAB_STATUS_URL`, `HOMELAB_STATUS_TOKEN` | 30 s |
+| `/api/now` | Houston clock activity | `SCHEDULE_ICS_URL` (optional) | 60 s |
 | `/api/visitor` | "You're visiting from…" | none (Vercel geo headers) | none |
 | `/api/ping` | "ping me" round-trip | none | none |
 
@@ -63,6 +64,15 @@ and save `refresh_token` as `STRAVA_REFRESH_TOKEN`.
 GitHub → Settings → Developer settings → Fine-grained personal access tokens → Generate.
 Repository access: Public repositories (read-only). Permissions: none. Set a long expiry.
 Save as `GITHUB_TOKEN`. (Unauthenticated calls from Vercel's shared IPs hit the 60/hour limit.)
+
+### "Now" calendar (what the Houston clock says I'm doing)
+
+Make a separate calendar named `Now` (Google Calendar → "+" next to Other calendars → Create).
+Put routine events in it: "training", "eating lunch", "driving home", "on call" (all-day), with
+weekly repeats. Only this calendar is read, so nothing from your real calendar is exposed.
+Settings for that calendar → Integrate calendar → copy **Secret address in iCal format** →
+`SCHEDULE_ICS_URL`. The site shows the current event's title as "I'm probably <title>" and
+falls back to the weekday table in `lib/live-data.ts` when nothing is scheduled.
 
 ### Homelab status
 
