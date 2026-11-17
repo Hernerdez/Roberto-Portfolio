@@ -2,44 +2,96 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Code, Database, Globe, Layout, Server, Smartphone } from "lucide-react"
+import { Database, Layout, Network, Server, ShieldCheck, Smartphone } from "lucide-react"
 
+// Top row: networking and infrastructure (the day job). Bottom row: software.
 const skillCategories = [
   {
     id: 1,
-    title: "Frontend Development",
+    title: "Networking",
+    icon: <Network className="h-8 w-8 text-primary" />,
+    skills: [
+      "Cisco IOS",
+      "Cisco Nexus",
+      "Meraki (MX/MS/MR)",
+      "Ubiquiti UniFi",
+      "VLANs & Inter-VLAN Routing",
+      "OSPF",
+      "ACLs",
+      "DHCP/DNS",
+      "Wireless",
+      "Site-to-Site VPN",
+      "WireGuard",
+    ],
+  },
+  {
+    id: 2,
+    title: "Security & Access",
+    icon: <ShieldCheck className="h-8 w-8 text-primary" />,
+    skills: ["Palo Alto (Panorama)", "Firewall Policy", "Genetec / HID Access Control", "IP Cameras / PoE"],
+  },
+  {
+    id: 3,
+    title: "Systems & Identity",
+    icon: <Server className="h-8 w-8 text-primary" />,
+    skills: [
+      "Windows Server",
+      "Active Directory",
+      "Entra ID",
+      "Intune",
+      "Linux (Ubuntu)",
+      "Proxmox VE",
+      "Cisco CUCM",
+      "Teams Phone",
+    ],
+  },
+  {
+    id: 4,
+    title: "Frontend",
     icon: <Layout className="h-8 w-8 text-primary" />,
     skills: ["React", "Next.js", "HTML5", "CSS3", "JavaScript", "TypeScript", "Tailwind CSS"],
   },
   {
-    id: 2,
-    title: "Backend Development",
-    icon: <Server className="h-8 w-8 text-primary" />,
-    skills: ["Node.js", "Express", "Python", "Django", "REST API", "GraphQL"],
-  },
-  {
-    id: 3,
-    title: "Database",
-    icon: <Database className="h-8 w-8 text-primary" />,
-    skills: ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Supabase"],
-  },
-  {
-    id: 4,
-    title: "Mobile Development",
-    icon: <Smartphone className="h-8 w-8 text-primary" />,
-    skills: ["React Native", "Flutter", "iOS", "Android"],
-  },
-  {
     id: 5,
-    title: "DevOps",
-    icon: <Code className="h-8 w-8 text-primary" />,
-    skills: ["Git", "GitHub", "Docker", "CI/CD", "AWS", "Vercel", "Netlify"],
+    title: "Backend & Data",
+    icon: <Database className="h-8 w-8 text-primary" />,
+    skills: [
+      "Node.js",
+      "Express",
+      "Python",
+      "Django",
+      "REST API",
+      "GraphQL",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "Firebase",
+      "Supabase",
+    ],
   },
   {
     id: 6,
-    title: "Other",
-    icon: <Globe className="h-8 w-8 text-primary" />,
-    skills: ["UI/UX Design", "Figma", "Adobe XD", "SEO", "Agile", "Scrum"],
+    title: "Mobile, DevOps & Design",
+    icon: <Smartphone className="h-8 w-8 text-primary" />,
+    skills: [
+      "React Native",
+      "Flutter",
+      "iOS",
+      "Android",
+      "Git",
+      "GitHub",
+      "Docker",
+      "CI/CD",
+      "AWS",
+      "Vercel",
+      "Netlify",
+      "UI/UX Design",
+      "Figma",
+      "Adobe XD",
+      "SEO",
+      "Agile",
+      "Scrum",
+    ],
   },
 ]
 
@@ -57,7 +109,8 @@ export function Skills() {
           <h2 className="text-3xl font-bold mb-2">My Skills</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I've worked with a variety of technologies and tools in the web development ecosystem.
+            Networks and infrastructure by trade, software by training: tools I use at work and in projects I&apos;ve
+            built.
           </p>
         </motion.div>
 

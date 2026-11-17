@@ -47,17 +47,25 @@ export function About() {
             viewport={{ amount: 0.3 }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              I&apos;m <span className="text-primary">Roberto Hernandez</span>, a Full Stack Developer
+              I&apos;m <span className="text-primary">Roberto Hernandez</span>, a Network Engineer &amp; Software Developer
             </h3>
             <p className="text-muted-foreground mb-4">
-            Hey there! I'm a Software Engineering grad from Sam Houston State University. Currently doing IT / Networking at RelaDyne — firewalls, routers, system deployments, PowerShell scripts that save me from doing the same thing twice. Outside of work, I build full-stack apps from scratch because I can't sit still.
+              I run IT and networking at RelaDyne, a national fuel and lubricants distributor with about 2,000 users
+              across an HQ and branch sites nationwide. I own the Cisco Meraki and UniFi environments and the Cisco
+              Nexus core at HQ, handle Palo Alto firewall changes through Panorama, and build out new branches solo,
+              from the rack to the first user logging in. I&apos;m on the 24/7 on-call rotation, so I&apos;ve learned
+              what breaks at 2 a.m. and how to design so it doesn&apos;t.
             </p>
             <p className="text-muted-foreground mb-6">
-            Outside of coding, I'm a big fan of classic Nintendo games from the DS, Wii, and Wii U era—especially anything from the golden 2000s to early 2010s. When I'm not debugging, you can probably find me watching or playing basketball, losing track of time in an old Mario title, or thinking about my next creative side project. My passion lies in creating intuitive user experiences and writing clean, efficient code. I'm constantly
-            learning and exploring new technologies to stay at the forefront of web development.
+              The rest of the job is everything that touches the network: Intune and Entra ID for devices and
+              identity, Genetec and HID access control, and migrating sites from Cisco CUCM to Teams Phone. I hold a
+              B.S. in Software Engineering from Sam Houston State University (May 2025) and earned my CCNA in
+              November 2026, and the degree shows up at work as scripts and tools that automate the repetitive
+              parts. I&apos;m bilingual in English and Spanish.
             </p>
             <p className="text-muted-foreground mb-8">
-              If you ever want to 1v1 me in Mario Kart or basketball, I wont turn you down. 
+              Off the clock: classic Nintendo from the DS, Wii and Wii U era, basketball, and side projects. If you
+              ever want to 1v1 me in Mario Kart or basketball, I won&apos;t turn you down.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>

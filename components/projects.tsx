@@ -20,7 +20,7 @@ export function Projects() {
         >
           <h2 className="text-3xl md:text-4xl font-light tracking-wider mb-8">Featured Projects</h2>
           <p className="text-muted-foreground text-lg font-light tracking-wide max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and experience in web development.
+            Network, infrastructure, and software projects I've built and run.
           </p>
         </motion.div>
 

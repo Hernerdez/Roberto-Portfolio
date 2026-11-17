@@ -36,7 +36,7 @@ export function Hero() {
   const [showIcons, setShowIcons] = useState(false)
   const [showText, setShowText] = useState(false)
   const [showNavbar, setShowNavbar] = useState(false)
-  const fullText = "Full Stack Developer"
+  const fullText = "Network Engineer & Software Developer"
   const [showCursor, setShowCursor] = useState(true)
 
   useEffect(() => {
@@ -114,8 +114,8 @@ export function Hero() {
     {
       element: (
         <p className="text-muted-foreground text-lg font-light tracking-wide mb-8 max-w-2xl mx-auto">
-          I build exceptional and accessible digital experiences for the web. Passionate about creating elegant
-          solutions to complex problems.
+          I design, build, and support multi-site networks: Cisco, Meraki, and Palo Alto at work, with a software
+          engineering degree I put to work automating it all.
         </p>
       ),
       delay: 0.4,

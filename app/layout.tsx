@@ -4,8 +4,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata = {
-  title: "Roberto Hernandez - Portfolio",
-  description: "Full Stack Developer Portfolio",
+  title: "Roberto Hernandez | Network Engineer & Software Developer",
+  description:
+    "Roberto Hernandez, Network Engineer and Software Developer in Houston, TX. CCNA certified. I run multi-site Cisco, Meraki, and Palo Alto networks by day and build the software that automates them.",
 }
 
 export default function RootLayout({

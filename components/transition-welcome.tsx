@@ -85,7 +85,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
       <AnimatePresence>
         {showSideText && !exitText && (
           <>
-            {/* Left side - CREATIVE DEVELOPER */}
+            {/* Left side - NETWORK ENGINEER */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ export function TransitionWelcome({ onComplete, onExit }: TransitionWelcomeProps
             >
               <div className="transform -rotate-90 origin-center">
                 <span className="text-sm md:text-base tracking-[0.3em] text-gray-300 font-light whitespace-nowrap">
-                  CREATIVE DEVELOPER
+                  NETWORK ENGINEER
                 </span>
               </div>
             </motion.div>
