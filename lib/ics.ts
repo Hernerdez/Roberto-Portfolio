@@ -197,16 +197,19 @@ function occurrenceContaining(ev: IcsEvent, at: Date): Date | null {
   return null
 }
 
-/** The event happening at `at`, preferring timed over all-day and the latest start. */
+/** The event happening at `at`. When events overlap: timed beats all-day,
+ *  a one-off beats a repeating one, then the latest start wins. So dropping a
+ *  single event on top of the routine overrides it for exactly its duration. */
 export function currentEvent(events: IcsEvent[], at = new Date()): { summary: string; start: Date; end: Date } | null {
-  let best: { summary: string; start: Date; end: Date; allDay: boolean } | null = null
+  type Cand = { summary: string; start: Date; end: Date; rank: [number, number, number] }
+  let best: Cand | null = null
   for (const ev of events) {
     if (ev.cancelled || !ev.summary) continue
     const start = occurrenceContaining(ev, at)
     if (!start) continue
     const end = new Date(start.getTime() + (ev.end.getTime() - ev.start.getTime()))
-    const cand = { summary: ev.summary, start, end, allDay: ev.allDay }
-    if (!best || (best.allDay && !cand.allDay) || (best.allDay === cand.allDay && cand.start > best.start)) best = cand
+    const cand: Cand = { summary: ev.summary, start, end, rank: [ev.allDay ? 0 : 1, ev.rrule ? 0 : 1, start.getTime()] }
+    if (!best || cand.rank.some((v, i) => v !== best!.rank[i]) && cand.rank > best.rank) best = cand
   }
   return best ? { summary: best.summary, start: best.start, end: best.end } : null
 }
