@@ -36,3 +36,6 @@ ehthumbs.db
 Thumbs.db
 # keep the template, ignore real env files
 !.env.example
+
+# internal planning docs
+docs/superpowers/

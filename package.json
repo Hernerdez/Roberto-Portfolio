@@ -1,7 +1,15 @@
 {
-  "name": "my-v0-project",
+  "name": "hernerdez-portfolio",
   "version": "0.1.0",
+  "description": "Portfolio of Roberto Hernandez, Network Engineer & Software Developer. Live at hernerdez.com.",
   "private": true,
+  "homepage": "https://hernerdez.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hernerdez/Roberto-Portfolio.git"
+  },
+  "author": "Roberto Hernandez",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
